@@ -1,0 +1,15 @@
+1) Added a new picklist value 'Approved' from Case's Status field.
+
+2) Created these custom fields on Case :
+
+Field API Names      		Type            Required
+_________________________________________________________
+Claim_Approval_Date__c	    Date        	No
+Note :  This field will updated with current date on Case approval by workflow.
+
+
+3) Crated batch class - SendEmailBatchClass with test class- Test_SendEmailBatchClass.
+
+4) Created schedulable class- scheduleClassForSendEmailBatch with test class- Test_scheduleClassForSendEmailBatch
+
+5) Scheduled this schedulable class to execute weekly-everyday (Monday - Sunday) from configuration.

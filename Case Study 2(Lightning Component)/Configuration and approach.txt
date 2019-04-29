@@ -1,0 +1,13 @@
+1) Created new objects 
+	i)Policy - having fields policy name and description
+	ii) Case Policy - It is junction object between Case and Policy object with Case associated with master-detail relationship.
+	
+
+2) Created dummy API at : http://www.mocky.io/v2/5cc6ce58320000fc0db94e4e having payment amunt , payment time , accountnumber.
+
+
+3) Created Lighting component - CaseComponentForRecordPage with apex class- CaseRecordPageComponentController
+	Apex class retrives valid Case Policy records for Case and makes callout at dummy API and results shown on Lightning Component.
+
+4) Configured Case flexi page to have created lightning component. 
+	

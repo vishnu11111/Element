@@ -1,0 +1,63 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="CaseRecordPageComponentController">
+	<aura:attribute name="caseDetails" type="Case" />
+    <aura:attribute name="casePolicyList" type="List" />
+    <aura:attribute name="casePoliciesCount" type="Integer" />
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+  
+    
+    <lightning:accordion activeSectionName="Policy">
+     <lightning:accordionSection name="Policy" label="Policies Section">
+         
+        <div class="slds-card slds-p-around_medium slds-border">
+        <aura:if isTrue="{!v.casePoliciesCount == 0}">
+          <div class="slds-notify slds-notify_toast slds-theme_warning slds-align_absolute-center" >No policies assigned to this Case!</div>
+        <aura:set attribute="else">    
+        <aura:iteration items="{!v.casePolicyList}" var="iteratedPolicy" indexVar="count">    
+        <div class="slds-grid">
+            
+            <div class="slds-cols slds-size_1-of-2 slds-p-left_large slds-p-right_large">
+                <aura:if isTrue="{!count == 0}">
+                <div class=" slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Policy Name</div>
+                </aura:if>
+                <div class="slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!iteratedPolicy.Policy__r.Name}</div> 
+            </div>  
+            <div class="slds-cols slds-size_1-of-2 slds-p-left_large slds-p-right_large">
+                <aura:if isTrue="{!count == 0}">
+                <div class="slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Policy Details</div>
+                </aura:if>
+                <div class="slds-card slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!iteratedPolicy.Policy__r.Description__c}</div>
+            </div>
+               
+        </div>
+        </aura:iteration>     
+        </aura:set>
+        </aura:if>    
+        </div>    
+     </lightning:accordionSection>
+     <lightning:accordionSection name="Payment" label="Payment Section">
+       <div class="slds-grid">
+        <div class="slds-cols slds-size_1-of-2 slds-p-left_large slds-p-right_large">
+                
+                <div class=" slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Payment Date</div>
+             	<div class="slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!v.caseDetails.Payment_Date__c}</div> 
+                <div class=" slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Customer Account Number(Encrypted)</div>
+             	<div class="slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!v.caseDetails.Customer_Account_Number__c}</div> 
+             	
+            </div>  
+            <div class="slds-cols slds-size_1-of-2 slds-p-left_large slds-p-right_large">
+               
+                <div class="slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Amount</div>
+             	<div class="slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!v.caseDetails.Payment_Amount__c}</div>
+                <div class="slds-card slds-align_absolute-center slds-heading slds-text-title_caps slds-p-top_medium slds-p-bottom_medium">Last Sync. Date</div>
+             	<div class="slds-align_absolute-center slds-p-top_medium slds-p-bottom_medium">{!v.caseDetails.Last_Sync_Date__c}</div> 
+            </div>
+        </div>   
+      </lightning:accordionSection>
+   
+   </lightning:accordion>
+      
+ 
+</aura:component>
