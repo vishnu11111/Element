@@ -1,4 +1,4 @@
-public class CaseRecordPageComponentController {
+public with sharing class CaseRecordPageComponentController {
     
     @auraEnabled
     public static ReturnWrapper getDataForCaseRecordPage( List<String> caseId ) {
