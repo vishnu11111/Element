@@ -1,4 +1,4 @@
-/********************************Batch for sending N26 Customers survey email*****************************/
+/********************************Batch for sending Element Customers email*****************************/
 
 public class SendEmailBatchClass implements Database.Batchable<sObject>, Database.Stateful{
         
